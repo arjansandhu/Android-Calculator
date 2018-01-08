@@ -16,11 +16,13 @@
         android:layout_centerInParent="true"
         android:orientation="vertical"
         android:gravity="center">
+
         <EditText
             android:id="@+id/firstInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="First Input"/>
+            android:hint="First Input"
+            android:inputType="number|numberSigned|numberDecimal" />
         <LinearLayout
             android:id="@+id/operationLayout"
             android:layout_width="match_parent"
@@ -48,12 +50,14 @@
                 android:layout_height="wrap_content"
                 android:text="/"/>
         </LinearLayout>
+
         <EditText
             android:id="@+id/secondInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="Second Input"/>
+            android:hint="Second Input"
+            android:inputType="number|numberSigned|numberDecimal" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/extraFunctionsLayout"

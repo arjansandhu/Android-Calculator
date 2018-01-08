@@ -5,14 +5,32 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+import android.widget.Button;
+import android.widget.EditText;
+import android.content.Intent;
 
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener{
     private final static String TAG = CalculatorActivity.class.getSimpleName();
 
+    EditText firstInput;
+    EditText secondInput;
+    double answerResult;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
+
+        firstInput = (EditText)findViewById(R.id.firstInput);
+        secondInput = (EditText)findViewById(R.id.secondInput);
+
+        Button add = (Button) findViewById(R.id.operation_add);
+        add.setOnClickListener(this); // calling onClick() method
+        Button sub = (Button) findViewById(R.id.operation_sub);
+        sub.setOnClickListener(this);
+        Button multi = (Button) findViewById(R.id.operation_multi);
+        multi.setOnClickListener(this);
+        Button div = (Button) findViewById(R.id.operation_div);
+        div.setOnClickListener(this);
     }
 
     /**
@@ -23,26 +41,39 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
      */
     @Override
     public void onClick(View v) {
+
         switch (v.getId())
         {
             case R.id.operation_add:
             {
-                //TODO add function
+                answerResult = Double.parseDouble(firstInput.getText().toString()) + Double.parseDouble(secondInput.getText().toString());
+                Intent answer = new Intent(this,AnswerActivity.class);
+                answer.putExtra("ANSWER", answerResult);
+                startActivity(answer);
                 break;
             }
             case R.id.operation_sub:
             {
-                //TODO subtract function
+                answerResult = Double.parseDouble(firstInput.getText().toString()) - Double.parseDouble(secondInput.getText().toString());
+                Intent answer = new Intent(this,AnswerActivity.class);
+                answer.putExtra("ANSWER", answerResult);
+                startActivity(answer);
                 break;
             }
             case R.id.operation_multi:
             {
-                //TODO multiply function
+                answerResult = Double.parseDouble(firstInput.getText().toString()) * Double.parseDouble(secondInput.getText().toString());
+                Intent answer = new Intent(this,AnswerActivity.class);
+                answer.putExtra("ANSWER", answerResult);
+                startActivity(answer);
                 break;
             }
             case R.id.operation_div:
             {
-                //TODO divide function
+                answerResult = Double.parseDouble(firstInput.getText().toString()) / Double.parseDouble(secondInput.getText().toString());
+                Intent answer = new Intent(this,AnswerActivity.class);
+                answer.putExtra("ANSWER", answerResult);
+                startActivity(answer);
                 break;
             }
             //TODO any extra implmentations (optional)
