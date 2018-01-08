@@ -31,6 +31,10 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         multi.setOnClickListener(this);
         Button div = (Button) findViewById(R.id.operation_div);
         div.setOnClickListener(this);
+        Button sin = (Button) findViewById(R.id.operation_sin);
+        sin.setOnClickListener(this);
+        Button exp = (Button) findViewById(R.id.operation_exp);
+        exp.setOnClickListener(this);
     }
 
     /**
@@ -47,10 +51,11 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
             case R.id.operation_add:
             {
                 answerResult = Double.parseDouble(firstInput.getText().toString()) + Double.parseDouble(secondInput.getText().toString());
-                Intent answer = new Intent(this,AnswerActivity.class);
+                Intent answer = new Intent(this, AnswerActivity.class);
                 answer.putExtra("ANSWER", answerResult);
                 startActivity(answer);
                 break;
+
             }
             case R.id.operation_sub:
             {
@@ -76,10 +81,25 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 startActivity(answer);
                 break;
             }
-            //TODO any extra implmentations (optional)
+            case R.id.operation_sin:
+            {
+                answerResult = Math.sin(Double.parseDouble(firstInput.getText().toString()));
+                Intent answer = new Intent(this,AnswerActivity.class);
+                answer.putExtra("ANSWER", answerResult);
+                startActivity(answer);
+                break;
+            }
+            case R.id.operation_exp:
+            {
+                answerResult = Math.pow(Double.parseDouble(firstInput.getText().toString()), Double.parseDouble(secondInput.getText().toString()));
+                Intent answer = new Intent(this,AnswerActivity.class);
+                answer.putExtra("ANSWER", answerResult);
+                startActivity(answer);
+                break;
+            }
             default:
             {
-                Toast.makeText(this, "Click not implmented yet", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Click not implemented yet", Toast.LENGTH_LONG).show();
                 Log.e(TAG, "View id: " + v.getId() + " click not implemented yet");
                 break;
             }
